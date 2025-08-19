@@ -80,70 +80,73 @@ $(function () {
 })
 $(function () {
 
-  $('#about-link').on('click', function () {
+  $('#statistics-link').on('click', function () {
     gsap.to('#navigation-content', 0, { display: "none", delay: .7 });
     gsap.to('#navigation-content', 0, { y: '-100%', delay: .7 });
     gsap.to('#header', 0, { display: "none" });
-    gsap.to('#blog', 0, { display: "none" });
-    gsap.to('#portfolio', 0, { display: "none" });
-    gsap.to('#breaker', 0, { display: "block" });
-    gsap.to('#breaker-two', 0, { display: "block", delay: .1 });
-    gsap.to('#contact', 0, { display: "none" });
-    gsap.to('#breaker', 0, { display: "none", delay: 2 });
-    gsap.to('#breaker-two', 0, { display: "none", delay: 2 });
-    gsap.to('#about', 0, { display: "block", delay: .7 });
-    gsap.to('#navigation-content', 0, { display: 'flex', delay: 2 });
-  })
-  $('#contact-link').on('click', function () {
-    gsap.to('#navigation-content', 0, { display: "none", delay: .7 });
-    gsap.to('#navigation-content', 0, { y: '-100%', delay: .7 });
-    gsap.to('#header', 0, { display: "none" });
-    gsap.to('#about', 0, { display: "none" });
-    gsap.to('#blog', 0, { display: "none" });
-    gsap.to('#portfolio', 0, { display: "none" });
+    gsap.to('#help', 0, { display: "none" });
+    gsap.to('#memory', 0, { display: "none" });
+    gsap.to('#resources', 0, { display: "none" });
     gsap.to('#breaker', 0, { display: "block" });
     gsap.to('#breaker-two', 0, { display: "block", delay: .1 });
     gsap.to('#breaker', 0, { display: "none", delay: 2 });
     gsap.to('#breaker-two', 0, { display: "none", delay: 2 });
-    gsap.to('#contact', 0, { display: "block", delay: .7 });
+    gsap.to('#statistics', 0, { display: "block", delay: .7 });
     gsap.to('#navigation-content', 0, { display: 'flex', delay: 2 });
   })
-  $('#portfolio-link').on('click', function () {
+
+  $('#help-link').on('click', function () {
     gsap.to('#navigation-content', 0, { display: "none", delay: .7 });
     gsap.to('#navigation-content', 0, { y: '-100%', delay: .7 });
     gsap.to('#header', 0, { display: "none" });
-    gsap.to('#about', 0, { display: "none" });
-    gsap.to('#contact', 0, { display: "none" });
-    gsap.to('#blog', 0, { display: "none" });
+    gsap.to('#statistics', 0, { display: "none" });
+    gsap.to('#memory', 0, { display: "none" });
+    gsap.to('#resources', 0, { display: "none" });
     gsap.to('#breaker', 0, { display: "block" });
     gsap.to('#breaker-two', 0, { display: "block", delay: .1 });
     gsap.to('#breaker', 0, { display: "none", delay: 2 });
     gsap.to('#breaker-two', 0, { display: "none", delay: 2 });
-    gsap.to('#portfolio', 0, { display: "block", delay: .7 });
+    gsap.to('#help', 0, { display: "block", delay: .7 });
     gsap.to('#navigation-content', 0, { display: 'flex', delay: 2 });
   })
-  $('#blog-link').on('click', function () {
+
+  $('#memory-link').on('click', function () {
     gsap.to('#navigation-content', 0, { display: "none", delay: .7 });
     gsap.to('#navigation-content', 0, { y: '-100%', delay: .7 });
     gsap.to('#header', 0, { display: "none" });
-    gsap.to('#about', 0, { display: "none" });
-    gsap.to('#portfolio', 0, { display: "none" });
-    gsap.to('#contact', 0, { display: "none" });
+    gsap.to('#statistics', 0, { display: "none" });
+    gsap.to('#help', 0, { display: "none" });
+    gsap.to('#resources', 0, { display: "none" });
     gsap.to('#breaker', 0, { display: "block" });
     gsap.to('#breaker-two', 0, { display: "block", delay: .1 });
     gsap.to('#breaker', 0, { display: "none", delay: 2 });
     gsap.to('#breaker-two', 0, { display: "none", delay: 2 });
-    gsap.to('#blog', 0, { display: "block", delay: .7 });
+    gsap.to('#memory', 0, { display: "block", delay: .7 });
     gsap.to('#navigation-content', 0, { display: 'flex', delay: 2 });
   })
+
+  $('#resources-link').on('click', function () {
+    gsap.to('#navigation-content', 0, { display: "none", delay: .7 });
+    gsap.to('#navigation-content', 0, { y: '-100%', delay: .7 });
+    gsap.to('#header', 0, { display: "none" });
+    gsap.to('#statistics', 0, { display: "none" });
+    gsap.to('#help', 0, { display: "none" });
+    gsap.to('#memory', 0, { display: "none" });
+    gsap.to('#breaker', 0, { display: "block" });
+    gsap.to('#breaker-two', 0, { display: "block", delay: .1 });
+    gsap.to('#breaker', 0, { display: "none", delay: 2 });
+    gsap.to('#breaker-two', 0, { display: "none", delay: 2 });
+    gsap.to('#resources', 0, { display: "block", delay: .7 });
+    gsap.to('#navigation-content', 0, { display: 'flex', delay: 2 });
+  })
+
   $('#home-link').on('click', function () {
     gsap.to('#navigation-content', 0, { display: "none", delay: .7 });
     gsap.to('#navigation-content', 0, { y: '-100%', delay: .7 });
-    gsap.to('#header', 0, { display: "none" });
-    gsap.to('#about', 0, { display: "none" });
-    gsap.to('#portfolio', 0, { display: "none" });
-    gsap.to('#contact', 0, { display: "none" });
-    gsap.to('#blog', 0, { display: "none" });
+    gsap.to('#statistics', 0, { display: "none" });
+    gsap.to('#help', 0, { display: "none" });
+    gsap.to('#memory', 0, { display: "none" });
+    gsap.to('#resources', 0, { display: "none" });
     gsap.to('#breaker', 0, { display: "block" });
     gsap.to('#breaker-two', 0, { display: "block", delay: .1 });
     gsap.to('#breaker', 0, { display: "none", delay: 2 });
@@ -184,16 +187,68 @@ $(function () {
 
 })
 
-$('.count').each(function () {
-  $(this).prop('Counter', 0).animate({
-    Counter: $(this).text()
-  }, {
-    duration: 20000,
-    easing: 'swing',
-    step: function (now) {
-      $(this).text(Math.ceil(now));
-    }
+// Calcul automatique des féminicides jusqu'à Noël
+function calculateFeminicidesUntilChristmas() {
+  const today = new Date();
+  const currentYear = today.getFullYear();
+  
+  // Date de Noël de cette année
+  let christmas = new Date(currentYear, 11, 25); // 25 décembre
+  
+  // Si Noël est déjà passé cette année, on prend Noël de l'année prochaine
+  if (today > christmas) {
+    christmas = new Date(currentYear + 1, 11, 25);
+  }
+  
+  // Calcul du nombre de jours jusqu'à Noël
+  const timeDifference = christmas.getTime() - today.getTime();
+  const daysUntilChristmas = Math.ceil(timeDifference / (1000 * 3600 * 24));
+  
+  // Calcul basé sur la statistique : 140 féminicides par an = 1 tous les 2,6 jours environ
+  const feminicidesPerDay = 140 / 365;
+  const estimatedFeminicides = Math.ceil(daysUntilChristmas * feminicidesPerDay);
+  
+  return {
+    feminicides: estimatedFeminicides,
+    days: daysUntilChristmas
+  };
+}
+
+// Mise à jour automatique du compteur
+$(document).ready(function() {
+  const data = calculateFeminicidesUntilChristmas();
+  
+  // Mise à jour du contenu HTML avec le nombre calculé
+  $('.firstline1.count').text(data.feminicides);
+  
+  // Optionnel : mise à jour du texte pour indiquer le nombre de jours
+  // Vous pouvez décommenter cette ligne si vous voulez afficher les jours restants
+  // $('#sup').html(`Encore <small style="font-size:0.6em;">(${data.days} jours)</small>`);
+  
+  // Animation du compteur
+  $('.count').each(function () {
+    const finalCount = $(this).text();
+    $(this).prop('Counter', 0).animate({
+      Counter: finalCount
+    }, {
+      duration: 15000,
+      easing: 'swing',
+      step: function (now) {
+        $(this).text(Math.ceil(now));
+      }
+    });
   });
+  
+  // Mise à jour quotidienne automatique (optionnel)
+  // Le compteur se mettra à jour automatiquement chaque jour
+  setInterval(function() {
+    const newData = calculateFeminicidesUntilChristmas();
+    if (newData.feminicides !== data.feminicides) {
+      $('.firstline1.count').text(newData.feminicides);
+      data.feminicides = newData.feminicides;
+      data.days = newData.days;
+    }
+  }, 24 * 60 * 60 * 1000); // Vérifie une fois par jour
 });
 
 

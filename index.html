@@ -4,26 +4,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="#" />
-    <meta name="keywords"
-        content="#" />
-    <meta name="author" content="#" />
-    <title>avant-noêl</title>
+    <meta name="description" content="Sensibilisation aux féminicides en France - Compteur en temps réel jusqu'à Noël. N'oublions pas les victimes de violences conjugales." />
+    <meta name="keywords" content="féminicides, violences conjugales, sensibilisation, France, femmes, victimes, prévention, 3919" />
+    <meta name="author" content="Projet de sensibilisation sociale" />
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Avant Noël - Sensibilisation aux féminicides">
+    <meta property="og:description" content="Compteur en temps réel des féminicides potentiels avant Noël. Une initiative de sensibilisation aux violences conjugales en France.">
+    <meta property="og:url" content="">
+    <meta property="og:image" content="images/thumbnail.PNG">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Avant Noël - Sensibilisation aux féminicides">
+    <meta property="twitter:description" content="Compteur en temps réel des féminicides potentiels avant Noël. Une initiative de sensibilisation aux violences conjugales en France.">
+    <meta property="twitter:image" content="images/thumbnail.PNG">
+    
+    <title>Avant Noël - Sensibilisation aux féminicides en France</title>
     <!--favicon-img-->
     <link rel="icon" type="image/png" href="images/favicon.png">
     <!--favicon-img-->
     <!--main css file should not be removed -->
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/breaker-style-four.css">
+    <link rel="stylesheet" href="css/sections.css">
     <!--main css file-->
     <script src="/js/gsap.min.js"></script>
 </head>
 
 <body>
 
-    <audio controls autoplay>
+    <audio controls autoplay muted aria-label="Musique d'ambiance">
         <source src="music/All-is-fine.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
+        Votre navigateur ne supporte pas l'élément audio.
     </audio>
 
     <!--contains all the div-->
@@ -57,11 +72,11 @@
             </div>
             <div class="navigation-links">
                 <ul>
-                    <li>item 1</li>
-                    <li>item 2</li>
-                    <li>item 3</li>
-                    <li>item 4</li>
-                    <li>item 5</li>
+                    <li><a href="#" id="home-link" data-text="ACCUEIL">Accueil</a></li>
+                    <li><a href="#" id="statistics-link" data-text="CHIFFRES">Les chiffres</a></li>
+                    <li><a href="#" id="help-link" data-text="AIDE">Demander de l'aide</a></li>
+                    <li><a href="#" id="memory-link" data-text="MÉMOIRE">Mémoire des victimes</a></li>
+                    <li><a href="#" id="resources-link" data-text="RESSOURCES">Ressources</a></li>
                 </ul>
             </div>
         </div>
@@ -70,6 +85,11 @@
         <!--Menubar-->
         <div id="navigation-bar">
             <img src="images/1000px-woman-power_emblem-svg.png" alt="logo">
+            <div class="menubar">
+                <span class="first-span"></span>
+                <span class="second-span"></span>
+                <span class="third-span"></span>
+            </div>
         </div>
         <!--Header-->
         <div id="header">
@@ -82,8 +102,8 @@
                         <div class="firstline"><span class="color1"> FÉMINICIDES</span><br>avant noël</div><br>
                         <div class="secondline">
                             N'oublions pas
-                            <span class="txt-rotate color" data-period="1200"
-                                data-rotate='[ " clara, égorgée par son compagnon", " une femme, abattue par arme à feu par son compagnon.", " Marie-Josèphe, poignardée à mort par son ami." ]'></span>
+                            <span class="txt-rotate color" data-period="2000"
+                                data-rotate='[ " Clarisse, 23 ans, étudiante en droit, tuée par son ex-petit ami", " Marie, 35 ans, infirmière et mère de 3 enfants, assassinée par son mari", " Fatima, 28 ans, professeure, poignardée par son compagnon", " Léa, 31 ans, artiste peintre, étranglée par son conjoint", " Sandrine, 42 ans, commerçante, abattue par son ex-mari" ]'></span>
                             <span class="slash">|</span>
                         </div>
 
@@ -92,8 +112,136 @@
 
             </div>
             <!--Header End-->
-            <!--HomePage End-->
-            <!--Main-Section End-->
+
+        </div>
+        
+        <!-- Section Statistiques -->
+        <div id="statistics" style="display: none;">
+            <div class="section-content">
+                <h1>Les chiffres clés</h1>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">140</div>
+                        <div class="stat-label">féminicides par an en France</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">1</div>
+                        <div class="stat-label">femme tuée tous les 2-3 jours</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">220 000</div>
+                        <div class="stat-label">femmes victimes de violences conjugales physiques et/ou sexuelles par an</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Section Aide -->
+        <div id="help" style="display: none;">
+            <div class="section-content">
+                <h1>Demander de l'aide</h1>
+                <div class="help-content">
+                    <div class="emergency-number">
+                        <div class="number">3919</div>
+                        <div class="description">
+                            Numéro national d'information pour les femmes victimes de violences<br>
+                            <strong>Gratuit • Anonyme • 24h/24 • 7j/7</strong>
+                        </div>
+                    </div>
+                    <div class="other-numbers">
+                        <div class="help-item">
+                            <strong>En urgence :</strong> 17 (Police) ou 15 (SAMU)
+                        </div>
+                        <div class="help-item">
+                            <strong>Chat en ligne :</strong> <a href="https://arretonslesviolences.gouv.fr" target="_blank">arretonslesviolences.gouv.fr</a>
+                        </div>
+                        <div class="help-item">
+                            <strong>SMS :</strong> 114 (gratuit pour les personnes sourdes ou malentendantes)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Section Mémoire -->
+        <div id="memory" style="display: none;">
+            <div class="section-content">
+                <h1>En mémoire</h1>
+                <div class="memory-content">
+                    <p class="memory-intro">Chaque victime avait un nom, une vie, des projets...</p>
+                    <div class="testimonials">
+                        <div class="testimonial">
+                            <p>"Clara, 34 ans, mère de deux enfants, rêvait d'ouvrir sa propre librairie."</p>
+                        </div>
+                        <div class="testimonial">
+                            <p>"Marie-Josèphe, 28 ans, étudiante en médecine, voulait sauver des vies."</p>
+                        </div>
+                        <div class="testimonial">
+                            <p>"Sophie, 42 ans, professeure, aimait transmettre son savoir."</p>
+                        </div>
+                    </div>
+                    <p class="memory-footer">N'oublions jamais que derrière chaque statistique se cache une personne.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Section Ressources -->
+        <div id="resources" style="display: none;">
+            <div class="section-content">
+                <h1>Ressources utiles</h1>
+                <div class="resources-grid">
+                    <div class="resource-item">
+                        <h3>Pour les victimes</h3>
+                        <ul>
+                            <li><a href="https://www.solidaritefemmes.org" target="_blank">Solidarité Femmes</a></li>
+                            <li><a href="https://www.enpasdeportes.org" target="_blank">En Pas de Portes</a></li>
+                            <li><a href="https://www.planningfamilial.org" target="_blank">Planning Familial</a></li>
+                        </ul>
+                    </div>
+                    <div class="resource-item">
+                        <h3>Pour s'informer</h3>
+                        <ul>
+                            <li><a href="https://arretonslesviolences.gouv.fr" target="_blank">Site gouvernemental</a></li>
+                            <li><a href="https://www.centre-hubertine-auclert.fr" target="_blank">Centre Hubertine Auclert</a></li>
+                            <li><a href="https://www.haut-conseil-egalite.gouv.fr" target="_blank">Haut Conseil à l'Égalité</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>En urgence</h3>
+                    <div class="emergency-info">
+                        <div class="emergency-item">
+                            <strong>3919</strong> - Violences conjugales (gratuit, 24h/24)
+                        </div>
+                        <div class="emergency-item">
+                            <strong>17</strong> - Police
+                        </div>
+                        <div class="emergency-item">
+                            <strong>15</strong> - SAMU
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Sources</h3>
+                    <p>Statistiques basées sur les données du Ministère de l'Intérieur français et du Collectif Féminicides par compagnons ou ex.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Sensibilisation</h3>
+                    <p>Ce site a pour objectif de sensibiliser aux violences conjugales et de maintenir la mémoire des victimes.</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 - Projet de sensibilisation aux féminicides - Chaque vie compte</p>
+            </div>
+        </footer>
+        <!--HomePage End-->
+        <!--Main-Section End-->
 
         </div>
 
