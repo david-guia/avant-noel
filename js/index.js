@@ -44,17 +44,17 @@ $(function () {
     this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
 
     var that = this;
-    var delta = 200 - Math.random() * 100;
+    var delta = 50 - Math.random() * 25; // Apparition plus rapide (était 200-100)
 
-    if (this.isDeleting) { delta /= 2; }
+    if (this.isDeleting) { delta /= 4; } // Disparition plus rapide (était /2)
 
     if (!this.isDeleting && this.txt === fullTxt) {
-      delta = this.period;
+      delta = 3000; // Pause de 3 secondes une fois le texte complet
       this.isDeleting = true;
     } else if (this.isDeleting && this.txt === '') {
       this.isDeleting = false;
       this.loopNum++;
-      delta = 100;
+      delta = 50; // Transition rapide vers le prochain texte (était 100)
     }
 
     // Stocker la référence du timeout pour pouvoir l'arrêter

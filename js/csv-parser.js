@@ -36,24 +36,51 @@ class FeminicidesCSVParser {
     parseCSV(csvText) {
         const lines = csvText.trim().split('\n');
         
-        lines.forEach(line => {
-            const columns = line.split(';');
+        // Ignorer la ligne d'en-tête si elle existe
+        const dataLines = lines.slice(1);
+        
+        dataLines.forEach(line => {
+            // Parser CSV avec des virgules et gérer les guillemets
+            const columns = this.parseCSVLine(line);
             if (columns.length >= 4) {
-                const [date, prenom, age, ville] = columns;
+                const [nom, age, localite, conditions] = columns;
                 
                 // Filtrer les entrées valides
-                if (date && prenom && age && ville) {
+                if (nom && age && localite && conditions) {
                     this.data.push({
-                        date: date.trim(),
-                        prenom: prenom.trim(),
+                        nom: nom.trim(),
                         age: age.trim(),
-                        ville: ville.trim()
+                        localite: localite.trim(),
+                        conditions: conditions.trim()
                     });
                 }
             }
         });
         
         console.log(`${this.data.length} entrées chargées depuis le CSV`);
+    }
+
+    // Parser une ligne CSV en gérant les guillemets
+    parseCSVLine(line) {
+        const result = [];
+        let current = '';
+        let inQuotes = false;
+        
+        for (let i = 0; i < line.length; i++) {
+            const char = line[i];
+            
+            if (char === '"') {
+                inQuotes = !inQuotes;
+            } else if (char === ',' && !inQuotes) {
+                result.push(current);
+                current = '';
+            } else {
+                current += char;
+            }
+        }
+        
+        result.push(current);
+        return result;
     }
 
     // Générer les témoignages à partir des données CSV
@@ -65,28 +92,30 @@ class FeminicidesCSVParser {
         const selectedData = shuffledData.slice(0, 20);
         
         this.testimonials = selectedData.map(victim => {
-            let testimonial = ` ${victim.prenom}`;
+            let testimonial = ` ${victim.nom}`;
             
-            // Ajouter l'âge si disponible et différent de "Une femme", "Une fille", etc.
-            if (victim.age && !isNaN(victim.age) && victim.age !== '') {
+            // Ajouter l'âge si disponible
+            if (victim.age && victim.age !== '') {
                 testimonial += `, ${victim.age} ans`;
             }
             
-            // Ajouter la ville
-            if (victim.ville && victim.ville !== '') {
-                testimonial += `, de ${victim.ville}`;
+            // Ajouter la localité
+            if (victim.localite && victim.localite !== '') {
+                testimonial += `, de ${victim.localite}`;
             }
             
-            // Messages variés pour respecter la dignité des victimes
-            const endings = [
-                ', victime de féminicide',
-                ', tuée par son compagnon',
-                ', assassinée par son ex-conjoint',
-                ', victime de violences conjugales',
-                ', tuée par son partenaire'
-            ];
-            
-            testimonial += endings[Math.floor(Math.random() * endings.length)];
+            // Ajouter les conditions exactes du féminicide de façon respectueuse
+            if (victim.conditions && victim.conditions !== '') {
+                // Nettoyer légèrement le texte pour la présentation mais garder l'essentiel
+                let conditions = victim.conditions;
+                
+                // Simplifier certaines formulations trop techniques tout en gardant l'information
+                conditions = conditions.replace(/mise en examen/g, 'auteur arrêté');
+                conditions = conditions.replace(/garde à vue/g, 'auteur interpellé');
+                conditions = conditions.replace(/homicide volontaire/g, 'meurtre');
+                
+                testimonial += `, ${conditions}`;
+            }
             
             return testimonial;
         });
