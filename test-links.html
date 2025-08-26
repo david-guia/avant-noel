@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Parsing CSV avec Liens</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .testimonial { margin: 10px 0; padding: 10px; border: 1px solid #ccc; }
+        .link { color: #ff6b6b; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Test du Parsing CSV avec Liens</h1>
+    <div id="results"></div>
+    <div id="testimonials"></div>
+    
+    <script src="js/csv-parser.js"></script>
+    <script>
+        window.addEventListener('load', async function() {
+            const results = document.getElementById('results');
+            const testimonials = document.getElementById('testimonials');
+            
+            try {
+                const parser = new FeminicidesCSVParser();
+                await parser.loadCSV();
+                
+                results.innerHTML = `
+                    <h2>✅ Résultats du parsing</h2>
+                    <p><strong>Données CSV:</strong> ${parser.data.length} entrées</p>
+                    <p><strong>Témoignages générés:</strong> ${parser.testimonials.length}</p>
+                    <p><strong>Avec liens:</strong> ${parser.data.filter(d => d.lien).length} entrées</p>
+                `;
+                
+                if (parser.testimonials.length > 0) {
+                    testimonials.innerHTML = '<h2>Témoignages avec liens:</h2>' + 
+                        parser.testimonials.slice(0, 10).map(t => `<div class="testimonial">${t}</div>`).join('');
+                }
+                
+                // Test direct d'un témoignage
+                const firstVictim = parser.data.find(d => d.lien);
+                if (firstVictim) {
+                    testimonials.innerHTML += `
+                        <h3>Test manuel pour ${firstVictim.prenom}:</h3>
+                        <p>Lien brut: ${firstVictim.lien}</p>
+                        <p>Test HTML: <a href="${firstVictim.lien}" target="_blank" style="color: #ff6b6b;">(lien)</a></p>
+                    `;
+                }
+                
+            } catch (error) {
+                console.error('Erreur:', error);
+                results.innerHTML = `<p style="color: red;">❌ Erreur: ${error.message}</p>`;
+            }
+        });
+    </script>
+</body>
+</html>

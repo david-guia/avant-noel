@@ -25,7 +25,7 @@ $(function () {
     this.toRotate = toRotate;
     this.el = el;
     this.loopNum = 0;
-    this.period = parseInt(period, 10) || 100;
+    this.period = parseInt(period, 10) || 2000;
     this.txt = '';
     this.tick();
     this.isDeleting = false;
@@ -57,10 +57,15 @@ $(function () {
       delta = 100;
     }
 
-    setTimeout(function () {
+    // Stocker la référence du timeout pour pouvoir l'arrêter
+    var that = this;
+    this.timeout = setTimeout(function () {
       that.tick();
     }, delta);
   };
+
+  // Fonction globale accessible pour la réinitialisation
+  window.TxtRotate = TxtRotate;
 
   window.onload = function () {
     var elements = document.getElementsByClassName('txt-rotate');
@@ -68,7 +73,8 @@ $(function () {
       var toRotate = elements[i].getAttribute('data-rotate');
       var period = elements[i].getAttribute('data-period');
       if (toRotate) {
-        new TxtRotate(elements[i], JSON.parse(toRotate), period);
+        // Stocker l'instance dans l'élément pour pouvoir la manipuler plus tard
+        elements[i].txtRotateInstance = new TxtRotate(elements[i], JSON.parse(toRotate), period);
       }
     }
     // INJECT CSS
