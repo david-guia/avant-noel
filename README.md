@@ -1,5 +1,7 @@
 # Avant Noël - Sensibilisation aux féminicides
 
+<img width="1896" height="957" alt="Capture-2025-08-26-143831" src="https://github.com/user-attachments/assets/caf5182f-2f14-447b-895f-39801010f71d" />
+
 ## 🎯 Objectif
 
 Ce projet est une initiative de sensibilisation aux violences conjugales et aux féminicides en France. Il présente un décompte automatique et réaliste du nombre potentiel de féminicides entre la date actuelle et Noël, basé sur les statistiques officielles françaises.
