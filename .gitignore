@@ -14,27 +14,60 @@ Thumbs.db
 *.swp
 *.swo
 *~
+*-original.*
+
+# Audio files (project decision to exclude music)
+*.mp3
+*.wav
+*.ogg
+*.m4a
+*.flac
+*.aac
+music/
+audio/
 
 # Test files
 test-*.html
 test-*.js
+*-test.*
+debug-*
 
 # Logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+lerna-debug.log*
 
-# Node modules (si jamais utilisés)
+# Build artifacts
+dist/
+build/
+out/
+
+# Dependencies
 node_modules/
+bower_components/
 
-# Cache
+# Cache directories
 .cache/
+.tmp/
+.sass-cache/
 
-# IDE
+# IDE and editor files
 .vscode/
 .idea/
 *.sublime-*
+*.code-workspace
 
-# Backup files
+# OS generated files
+Icon?
+.DocumentRevisions-V100
+.fseventsd
+.TemporaryItems
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Backup and optimization files
 *.backup
+*_optimized.*
+OPTIMIZATION.md

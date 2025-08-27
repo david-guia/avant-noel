@@ -7,23 +7,18 @@ class FeminicidesCSVParser {
 
     // Fonction pour charger et parser le CSV
     async loadCSV() {
-        console.log('Tentative de chargement du CSV...');
         try {
             const response = await fetch('./femmages.csv');
-            console.log('Réponse fetch:', response.status, response.statusText);
             
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             
             const csvText = await response.text();
-            console.log('CSV chargé, taille:', csvText.length, 'caractères');
-            console.log('Premières lignes du CSV:', csvText.substring(0, 200) + '...');
             
             this.parseCSV(csvText);
             this.generateTestimonials();
             
-            console.log('Parsing CSV terminé, témoignages générés:', this.testimonials.length);
         } catch (error) {
             console.error('Erreur lors du chargement du CSV:', error);
             // En cas d'erreur, on garde les témoignages par défaut

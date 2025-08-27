@@ -36,10 +36,8 @@
 
 <body>
 
-    <audio id="background-music" controls aria-label="Musique d'ambiance" style="opacity: 0.7;">
-        <source src="music/All-is-fine.mp3" type="audio/mpeg">
-        Votre navigateur ne supporte pas l'élément audio.
-    </audio>
+    <!-- Effet de neige -->
+    <div id="snow-container"></div>
 
     <!--contains all the div-->
     <div id="all">
@@ -273,52 +271,134 @@
     </div>
     <!--all the divisions-->
     <script src="js/jquery.min.js"></script>
-    <!-- <script src="js/particles.js"></script> -->
-    <!-- <script src="js/particles.min.js"></script> -->
     <script src="js/index.js"></script>
     <script src="js/csv-parser.js"></script>
-    <!--particles script-->
-    <!-- Particles désactivé temporairement - fichiers manquants
+    
+    <!-- Script pour l'effet de neige -->
     <script>
-        particlesJS("particles", { "particles": { "number": { "value": 60, "density": { "enable": true, "value_area": 800 } }, "color": { "value": "#fff" }, "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" }, "polygon": { "nb_sides": 5 }, "image": { "src": "img/github.svg", "width": 100, "height": 100 } }, "opacity": { "value": 0.5, "random": true, "anim": { "enable": false, "speed": 1, "opacity_min": 0.1, "sync": false } }, "size": { "value": 7, "random": true, "anim": { "enable": false, "speed": 40, "size_min": 0.1, "sync": false } }, "line_linked": { "enable": false, "distance": 500, "color": "#ffffff", "opacity": 0.4, "width": 2 }, "move": { "enable": true, "speed": 3, "direction": "bottom", "random": false, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 600, "rotateY": 1200 } } }, "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "bubble" }, "onclick": { "enable": true, "mode": "repulse" }, "resize": true }, "modes": { "grab": { "distance": 400, "line_linked": { "opacity": 0.5 } }, "bubble": { "distance": 400, "size": 4, "duration": 0.3, "opacity": 1, "speed": 3 }, "repulse": { "distance": 200, "duration": 0.4 }, "push": { "particles_nb": 4 }, "remove": { "particles_nb": 2 } } }, "retina_detect": true });
-    </script>
-    -->
-
-    <!-- Script pour démarrer la musique automatiquement -->
-    <script>
-        window.addEventListener('load', function() {
-            const audio = document.getElementById('background-music');
-            if (audio) {
-                // Tenter de lancer la musique automatiquement
-                audio.volume = 0.3; // Volume modéré (30%)
-                audio.loop = true; // Lecture en boucle
+        // Fonction pour vérifier si nous sommes en période de Noël (1er-31 décembre)
+        function isChristmasSeasonActive() {
+            const now = new Date();
+            const month = now.getMonth(); // 0-11 (décembre = 11)
+            const day = now.getDate(); // 1-31
+            
+            // Actif uniquement en décembre (mois 11)
+            return month === 11 && day >= 1 && day <= 31;
+        }
+        
+        // Fonction pour créer l'effet de neige
+        function createSnowEffect() {
+            // Vérifier d'abord si c'est la période de Noël
+            if (!isChristmasSeasonActive()) {
+                console.log('🎄 Effet de neige désactivé - Pas en période de Noël (1er-31 décembre)');
+                return;
+            }
+            
+            const snowContainer = document.getElementById('snow-container');
+            
+            // Vérifier si on est sur la page principale (header visible)
+            const headerElement = document.getElementById('header');
+            if (!headerElement || headerElement.style.display === 'none') {
+                return; // Pas d'effet de neige si on n'est pas sur la page principale
+            }
+            
+            console.log('❄️ Effet de neige activé pour la période de Noël');
+            
+            // Créer les flocons de neige
+            const snowflakeCount = 50; // Nombre de flocons
+            const snowflakeChars = ['❄', '❅', '❆', '⋄', '◦', '∘']; // Différents symboles de neige
+            
+            for (let i = 0; i < snowflakeCount; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.className = 'snowflake';
                 
-                const playPromise = audio.play();
+                // Choisir un symbole aléatoire
+                const randomChar = snowflakeChars[Math.floor(Math.random() * snowflakeChars.length)];
+                snowflake.textContent = randomChar;
                 
-                if (playPromise !== undefined) {
-                    playPromise.then(() => {
-                        console.log('🎵 Musique démarrée automatiquement');
-                    }).catch(error => {
-                        console.log('⚠️ Autoplay bloqué par le navigateur. Cliquez sur la page pour démarrer la musique.');
-                        
-                        // Si l'autoplay échoue, démarrer au premier clic/interaction
-                        const startMusicOnInteraction = () => {
-                            audio.play().then(() => {
-                                console.log('🎵 Musique démarrée après interaction utilisateur');
-                                // Supprimer les listeners une fois la musique démarrée
-                                document.removeEventListener('click', startMusicOnInteraction);
-                                document.removeEventListener('keydown', startMusicOnInteraction);
-                                document.removeEventListener('scroll', startMusicOnInteraction);
-                            });
-                        };
-                        
-                        document.addEventListener('click', startMusicOnInteraction);
-                        document.addEventListener('keydown', startMusicOnInteraction);
-                        document.addEventListener('scroll', startMusicOnInteraction);
-                    });
+                // Position horizontale aléatoire
+                snowflake.style.left = Math.random() * 100 + '%';
+                
+                // Délai de démarrage aléatoire
+                snowflake.style.animationDelay = Math.random() * 15 + 's';
+                
+                // Opacité aléatoire
+                snowflake.style.opacity = Math.random() * 0.6 + 0.4;
+                
+                snowContainer.appendChild(snowflake);
+            }
+        }
+        
+        // Fonction pour nettoyer l'effet de neige
+        function clearSnowEffect() {
+            const snowContainer = document.getElementById('snow-container');
+            if (snowContainer) {
+                snowContainer.innerHTML = '';
+            }
+        }
+        
+        // Fonction pour afficher un message informatif sur la période
+        function displaySeasonInfo() {
+            if (isChristmasSeasonActive()) {
+                console.log('🎄 Période de Noël active (1er-31 décembre) - Effet de neige disponible');
+            } else {
+                const now = new Date();
+                const currentYear = now.getFullYear();
+                const nextDecember = new Date(currentYear, 11, 1); // 1er décembre de cette année
+                
+                // Si on est après le 31 décembre, prendre l'année suivante
+                if (now.getMonth() === 11 && now.getDate() > 31) {
+                    nextDecember.setFullYear(currentYear + 1);
+                } else if (now.getMonth() > 11 || (now.getMonth() === 11 && now.getDate() > 31)) {
+                    nextDecember.setFullYear(currentYear + 1);
                 }
+                
+                console.log(`🗓️ Effet de neige sera disponible à partir du 1er décembre ${nextDecember.getFullYear()}`);
+            }
+        }
+        
+        // Démarrer l'effet de neige au chargement de la page
+        window.addEventListener('load', function() {
+            displaySeasonInfo();
+            createSnowEffect();
+        });
+        
+        // Observer les changements de section pour activer/désactiver la neige
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+                    const headerElement = document.getElementById('header');
+                    if (headerElement && isChristmasSeasonActive()) {
+                        if (headerElement.style.display === 'none') {
+                            clearSnowEffect();
+                        } else if (headerElement.style.display !== 'none' || !headerElement.style.display) {
+                            clearSnowEffect();
+                            createSnowEffect();
+                        }
+                    }
+                }
+            });
+        });
+        
+        // Observer les changements sur l'élément header
+        window.addEventListener('load', function() {
+            const headerElement = document.getElementById('header');
+            if (headerElement) {
+                observer.observe(headerElement, { attributes: true, attributeFilter: ['style'] });
             }
         });
+        
+        // Vérifier périodiquement si on change de date (pour le cas où le site reste ouvert longtemps)
+        setInterval(function() {
+            const snowContainer = document.getElementById('snow-container');
+            if (snowContainer && snowContainer.children.length > 0 && !isChristmasSeasonActive()) {
+                console.log('🚫 Fin de la période de Noël - Arrêt de l\'effet de neige');
+                clearSnowEffect();
+            } else if (snowContainer && snowContainer.children.length === 0 && isChristmasSeasonActive()) {
+                console.log('🎄 Début de la période de Noël - Activation de l\'effet de neige');
+                createSnowEffect();
+            }
+        }, 60000 * 60); // Vérifier toutes les heures
     </script>
 
 </body>
